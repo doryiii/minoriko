@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/poolview_menu_refresh"
+          android:icon="@drawable/ic_menu_refresh"
+          android:title="Refresh" />
+
+    <item android:id="@+id/poolview_menu_openpage"
+          android:title="Open in Browser" />
+
+    <item android:id="@+id/poolview_menu_fav"
+          android:icon="@drawable/ic_menu_fav"
+          android:title="Favorite" />
+
+    <item android:id="@+id/poolview_menu_all"
+          android:icon="@drawable/ic_menu_goto"
+          android:title="Load all" />
+</menu>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2011 Duy Truong <hduyudh@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+    <!-- Dummy item to prevent AutoCompleteTextView from receiving focus -->
+    <LinearLayout
+        android:id="@+id/imggrid_dummy"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px"/>
+
+    <LinearLayout
+        android:id="@+id/imggrid_searchbar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:visibility="gone"
+        android:layout_weight="0">
+
+        <com.duy.minoriko2.widgets.MySearchBox
+            android:id="@+id/imggrid_searchtxt"
+            android:hint="Tags, space-separated"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:selectAllOnFocus="true"
+            android:completionThreshold="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:nextFocusUp="@+id/imggrid_searchtxt"
+            android:nextFocusLeft="@+id/imggrid_searchtxt"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/imggrid_searchbtn"
+            android:text="Search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"/>
+    </LinearLayout>
+
+    <com.duy.minoriko2.widgets.ImageGrid
+        android:id="@+id/imggrid_imgGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="6dp"
+        android:horizontalSpacing="6dp"
+        android:columnWidth="95dp"
+        android:stretchMode="columnWidth"
+        android:layout_weight="1"
+        android:gravity="center"/>
+
+    <ProgressBar
+        android:id="@+id/imggrid_progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="3sp"
+        android:layout_weight="0"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:indeterminate="false"/>
+</LinearLayout>

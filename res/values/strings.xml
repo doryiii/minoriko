@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minoriko</string>
+    <string name="app_label">Minoriko</string>
+    <string name="app_desc">
+        Minoriko is a viewer for danbooru.donmai.us and konachan.com. It\'s
+        designed mostly for viewing pooled doujin in danbooru.donmai.us.
+        Most notable features include viewing of translation notes and
+        comments, browse by tags, and saving searches as favorites.
+    </string>
+    <string name="pool_search_hint">Search Pools</string>
+    <string name="post_search_hint">Tags: space-separated</string>
+    <string name="tag_search_hint">Search Tags</string>
+    <string name="danbo_api_change_note">
+        Either this is a bug, or Danbooru changed their API.
+        Please report this error so that I can fix it :)</string>
+    <string name="img_too_big_note">
+        Image too big. Due to memory constrain, sample is used.
+        Download the image to SD card for full resolution</string>
+</resources>

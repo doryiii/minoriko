@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="danbo_server_entries">
+            <item>hijiribe.donmai.us</item>
+            <item>danbooru.donmai.us</item>
+            <item>konachan.com</item>
+            <item>gelbooru.com</item>
+            <item>behoimi.org</item>
+<!--        <item>konachan.net</item>  -->
+<!--             <item>Custom server</item>             -->
+        </string-array>
+
+        <string-array name="danbo_server_values">
+            <item>http://hijiribe.donmai.us/</item>
+            <item>http://danbooru.donmai.us/</item>
+            <item>http://konachan.com/</item>
+            <item>http://gelbooru.com/</item>
+            <item>http://behoimi.org/</item>
+<!--        <item>http://konachan.net/</item> -->
+<!--             <item>custom</item> -->
+        </string-array>
+
+        <string-array name="danbo_filter_entries">
+            <item>Safe</item>
+            <item>Questionable</item>
+            <item>Explicit</item>
+        </string-array>
+
+        <string-array name="danbo_filter_values">
+            <item>s</item>
+            <item>q</item>
+            <item>e</item>
+        </string-array>
+</resources>

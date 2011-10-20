@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/imgmenu_save"
+          android:icon="@drawable/ic_menu_save"
+          android:title="Save" />
+    <item android:id="@+id/imgmenu_openpage"
+          android:title="Open in Browser" />
+    <item android:id="@+id/imgmenu_tags"
+          android:icon="@drawable/ic_menu_tags"
+          android:title="Tags" />
+    <item android:id="@+id/imgmenu_comments"
+          android:icon="@drawable/ic_menu_comments"
+          android:title="Comments" />
+</menu>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2011 Duy Truong <hduyudh@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- 	<EditTextPreference -->
+<!--         android:title="Select Server" -->
+<!--         android:summary="Select the danbooru server" -->
+<!--         android:key="danbo_servers_list" -->
+<!--         android:dialogTitle="Select Server" -->
+<!--         android:dialogMessage="Select the danbooru server" -->
+<!--         android:defaultValue="http://hijiribe.donmai.us/" -->
+<!--         android:persistent="true" /> -->
+
+  <ListPreference
+        android:title="Minimum rating to show"
+        android:summary="Select minimum rating to display"
+        android:key="danbo_filter"
+        android:entries="@array/danbo_filter_entries"
+        android:entryValues="@array/danbo_filter_values"
+        android:defaultValue="s"
+        android:persistent="true" />
+
+    <Preference
+        android:title="Clear cache"
+        android:summary="Empties the SD card image cache"
+        android:key="clear_cache" />
+
+    <CheckBoxPreference
+        android:title="Purge cache automatically"
+        android:summary="Automatically delete files older than 1 day in the cache"
+        android:key="is_auto_purge"
+        android:defaultValue="true"/>
+
+<!--
+    <PreferenceCategory android:title="Login">
+      <EditTextPreference
+          android:name="EditText Preference"
+          android:summary="This allows you to enter a string"
+          android:defaultValue="Nothing"
+          android:title="Edit This Text"
+          android:key="editTextPref" />
+
+      <EditTextPreference
+          android:name="SIP Password"
+          android:summary="Password for your SIP Account"
+          android:defaultValue=""
+          android:title="Enter Password"
+          android:key="passPref"
+          android:password="true" />
+    </PreferenceCategory>
+-->
+</PreferenceScreen>
