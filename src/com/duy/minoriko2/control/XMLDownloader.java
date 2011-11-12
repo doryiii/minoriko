@@ -86,7 +86,7 @@ public class XMLDownloader extends AsyncTask<Void, Integer, Document> {
     protected Document doInBackground(Void... none) {
         //Log.e(Helper.TAG, this.toString() + " " + url);
         Document doc = (Document) MinorikoApplication.domCache
-        		.getFromCache(url);
+                .getFromCache(url);
         if (doc != null) {
             return doc;
         }
@@ -154,7 +154,7 @@ public class XMLDownloader extends AsyncTask<Void, Integer, Document> {
 
                         String str = new String(data);
                         str = str
-                        		//.replace("\r\n", "\n")
+                                //.replace("\r\n", "\n")
                                 //.replace("\r", "\n")
                                 .replace("\n", "&#10;");
                         if (isCancelled())

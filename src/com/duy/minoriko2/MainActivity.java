@@ -88,8 +88,8 @@ public class MainActivity extends Activity {
         });
 
         if (PreferenceManager.getDefaultSharedPreferences(this)
-        		.getBoolean("is_auto_purge", true)) {
-        	new CleanCache().execute();
+                .getBoolean("is_auto_purge", true)) {
+            new CleanCache().execute();
         }
     }
 
@@ -250,16 +250,16 @@ public class MainActivity extends Activity {
     }
 
     private class CleanCache extends AsyncTask<Void, Void, Void> {
-		@Override
-		protected Void doInBackground(Void... params) {
-			try {
-				Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-			} catch (Exception e) { }
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
+            } catch (Exception e) { }
 
 
             File dir = MainActivity.this.getExternalCacheDir();
             if (dir == null)
-            	return null;
+                return null;
 
             if (dir.isDirectory()) {
                 File[] children = dir.listFiles();
@@ -281,14 +281,14 @@ public class MainActivity extends Activity {
                 now.setToNow();
 
                 for (int i=0; i<total; i++) {
-                	if (children[i].isFile() && children[i].lastModified()
-                			< (now.toMillis(false) - 86400000)) {
-                		// delete files older than 1 day
-                		children[i].delete();
-                	}
+                    if (children[i].isFile() && children[i].lastModified()
+                            < (now.toMillis(false) - 86400000)) {
+                        // delete files older than 1 day
+                        children[i].delete();
+                    }
                 }
             }
-			return null;
-		}
+            return null;
+        }
     }
 }

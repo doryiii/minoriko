@@ -234,7 +234,7 @@ public abstract class ImgGridActivity extends Activity {
             }
 
             if (posts == null || position >= getCount()) {
-            	return cell;
+                return cell;
             }
 
             ((MinorikoApplication) context.getApplication())

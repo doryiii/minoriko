@@ -131,4 +131,13 @@ public class Note {
 //	    Log.v(TAG, "Note pic loading: " +
 //	    		txt);
     }
+
+    public void destroy() {
+        //Log.e("Minoriko", "Destroying webviews");
+        if (wv != null) {
+            wv.destroy();
+            wv = null;
+        }
+        pic = null;
+    }
 }

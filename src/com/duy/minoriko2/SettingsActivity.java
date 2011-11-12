@@ -125,8 +125,8 @@ public class SettingsActivity extends PreferenceActivity {
         filterPref = null;
         clearCachePref = null;
         if (dialog != null) {
-        	dialog.dismiss();
-        	dialog = null;
+            dialog.dismiss();
+            dialog = null;
         }
         if (clearCacheTask != null) {
             clearCacheTask.cancel(true);
@@ -145,7 +145,7 @@ public class SettingsActivity extends PreferenceActivity {
         protected Void doInBackground(Void... args) {
             File dir = SettingsActivity.this.getExternalCacheDir();
             if (dir == null) // no card
-            	return null;
+                return null;
 
             if (dir.isDirectory()) {
                 File[] children = dir.listFiles();
@@ -156,7 +156,7 @@ public class SettingsActivity extends PreferenceActivity {
                     publishProgress(i);
 
                     if (children[i].isFile())
-                    	children[i].delete();
+                        children[i].delete();
                 }
             }
             return null;

@@ -317,16 +317,16 @@ public class Helper {
      * @param post_id the id of the post
      */
     public static String getWebPostURL(Context context, int post_id) {
-    	String serverRoot = getServerRoot(context);
+        String serverRoot = getServerRoot(context);
 
-    	switch(getServerType(context)) {
-    	case GELBOORU:
-    		return serverRoot + "index.php?page=post&s=view&id=" + post_id;
-    	case DANBOORU:
-    		return serverRoot + "post/show/" + post_id;
-    	default:
-    		return "";
-    	}
+        switch(getServerType(context)) {
+        case GELBOORU:
+            return serverRoot + "index.php?page=post&s=view&id=" + post_id;
+        case DANBOORU:
+            return serverRoot + "post/show/" + post_id;
+        default:
+            return "";
+        }
     }
 
     /**
@@ -334,16 +334,16 @@ public class Helper {
      * @param post_id the id of the post
      */
     public static String getWebPoolURL(Context context, int pool_id) {
-    	String serverRoot = getServerRoot(context);
+        String serverRoot = getServerRoot(context);
 
-    	switch(getServerType(context)) {
-    	case GELBOORU:
-    		return serverRoot + "index.php?page=pool&s=show&id=" + pool_id;
-    	case DANBOORU:
-    		return serverRoot + "pool/show/" + pool_id;
-    	default:
-    		return "";
-    	}
+        switch(getServerType(context)) {
+        case GELBOORU:
+            return serverRoot + "index.php?page=pool&s=show&id=" + pool_id;
+        case DANBOORU:
+            return serverRoot + "pool/show/" + pool_id;
+        default:
+            return "";
+        }
     }
 
     /**
@@ -351,16 +351,16 @@ public class Helper {
      * @param text
      * @return text, with all known danbooru tags converted to html
      */
-	public static String convertDanbooruToHtml(String text) {
-		return text.trim()
-		        .replace("\n\n", "\n")
-		        .replace("<b>", "[b]").replace("</b>", "[/b]")
-		        .replace("<i>", "[i]").replace("</i>", "[/i]")
-		        .replace("<s>", "[s]").replace("</s>", "[/s]")
-		        .replace("<", "&lt;").replace(">", "&gt;")
-		        .replace("\n", "<br />")
-		        .replace("[i]", "<i>").replace("[/i]", "</i>")
-		        .replace("[b]", "<b>").replace("[/b]", "</b>")
-				.replace("[s]", "<s>").replace("[/s]", "</s>");
-	}
+    public static String convertDanbooruToHtml(String text) {
+        return text.trim()
+                .replace("\n\n", "\n")
+                .replace("<b>", "[b]").replace("</b>", "[/b]")
+                .replace("<i>", "[i]").replace("</i>", "[/i]")
+                .replace("<s>", "[s]").replace("</s>", "[/s]")
+                .replace("<", "&lt;").replace(">", "&gt;")
+                .replace("\n", "<br />")
+                .replace("[i]", "<i>").replace("[/i]", "</i>")
+                .replace("[b]", "<b>").replace("[/b]", "</b>")
+                .replace("[s]", "<s>").replace("[/s]", "</s>");
+    }
 }

@@ -137,8 +137,8 @@ public class ImgViewActivity extends Activity implements
         posts = (PostList) ((MinorikoApplication)getApplication())
                 .getObject(url);
         if (posts == null) { // if posts is already garbage-collected
-        	goBack();
-        	return;
+            goBack();
+            return;
         }
 
         tmpImv0 = new TimedImageView(this);
@@ -178,6 +178,11 @@ public class ImgViewActivity extends Activity implements
     public void onDestroy() {
         super.onDestroy();
         destroying = true;
+
+        if (imView0 != null)
+            imView0.setNotes(null);
+        if (imView1 != null)
+            imView1.setNotes(null);
 
         imView0 = null;
         imView1 = null;
@@ -486,12 +491,12 @@ public class ImgViewActivity extends Activity implements
             return true;
 
         case R.id.imgmenu_openpage:
-        	if (destroying || posts == null || index > posts.size())
-        		return true;
+            if (destroying || posts == null || index > posts.size())
+                return true;
 
-        	Helper.launchBrowser(this, Helper.getWebPostURL(
-        			this, posts.get(index).id));
-        	return true;
+            Helper.launchBrowser(this, Helper.getWebPostURL(
+                    this, posts.get(index).id));
+            return true;
 
         default:
             return super.onOptionsItemSelected(item);

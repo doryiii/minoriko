@@ -73,31 +73,31 @@ public class PoolListActivity extends Activity {
         list.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v,
-            		int position, long id) {
+                    int position, long id) {
                 openPool(position);
             }
         });
         list.setOnItemLongClickListener(new OnItemLongClickListener() {
-			@Override
-			public boolean onItemLongClick(AdapterView<?> a, View v,
-					int position, long id) {
-				if (destroying || position > pools.size())
-					return true;
+            @Override
+            public boolean onItemLongClick(AdapterView<?> a, View v,
+                    int position, long id) {
+                if (destroying || position > pools.size())
+                    return true;
 
-				View dialogView = View.inflate(PoolListActivity.this,
-						R.layout.pool_desc_popup, null);
-				TextView tv = (TextView) dialogView
-						.findViewById(R.id.pooldescpopup_tv);
-				tv.setText(Html.fromHtml(pools.get(position).desc));
+                View dialogView = View.inflate(PoolListActivity.this,
+                        R.layout.pool_desc_popup, null);
+                TextView tv = (TextView) dialogView
+                        .findViewById(R.id.pooldescpopup_tv);
+                tv.setText(Html.fromHtml(pools.get(position).desc));
 
-				Dialog dialog = (new AlertDialog.Builder(
-						PoolListActivity.this))
-	                .setView(dialogView)
+                Dialog dialog = (new AlertDialog.Builder(
+                        PoolListActivity.this))
+                    .setView(dialogView)
                     .setTitle(pools.get(position).name)
                     .create();
-	            dialog.show();
-				return true;
-			}
+                dialog.show();
+                return true;
+            }
         });
 
         init(intent);
@@ -152,8 +152,8 @@ public class PoolListActivity extends Activity {
     }
 
     private void launchSearch() {
-    	if (destroying)
-    		return;
+        if (destroying)
+            return;
         this.page = 0;
         getPoolListAdapter().waiting = true;
         launchDownload(1);
@@ -167,8 +167,8 @@ public class PoolListActivity extends Activity {
     }
 
     private void launchDownload(int doPage) {
-    	if (destroying)
-    		return;
+        if (destroying)
+            return;
         if (poolListDownloader != null)
             return;
 
@@ -196,8 +196,8 @@ public class PoolListActivity extends Activity {
 
         @Override
         public void onFinished(Document doc) {
-        	if (destroying)
-        		return;
+            if (destroying)
+                return;
 
             try {
                 if (!waiting) //uh-oh, there's a bug
@@ -218,8 +218,8 @@ public class PoolListActivity extends Activity {
 
         @Override
         public void onError(String errMsg) {
-        	if (destroying)
-        		return;
+            if (destroying)
+                return;
 
             if (!retried) {
                 waiting = true;

@@ -45,7 +45,7 @@ public class Comment {
         this.id = Integer.parseInt(e.getAttribute("id"));
         this.creator = e.getAttribute("creator");
         this.body = Html.fromHtml(
-        		Helper.convertDanbooruToHtml(e.getAttribute("body")),
+                Helper.convertDanbooruToHtml(e.getAttribute("body")),
                 null, tagHandler);
         this.time = Helper.getCommentTime(context,
                 e.getAttribute("created_at"));

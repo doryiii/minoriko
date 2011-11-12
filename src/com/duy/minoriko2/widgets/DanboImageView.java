@@ -138,6 +138,13 @@ public class DanboImageView extends NotifyImageView implements
     }
 
     public void setNotes(ArrayList<Note> notes) {
+        if (this.notes != null) {
+            for (Note note : this.notes) {
+                if (note != null) {
+                    note.destroy();
+                }
+            }
+        }
         this.notes = notes;
         currentNote = null;
         currentNoteBmp = null;

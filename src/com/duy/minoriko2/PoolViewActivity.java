@@ -274,11 +274,11 @@ public class PoolViewActivity extends ImgGridActivity {
             return true;
 
         case R.id.poolview_menu_openpage:
-        	if (destroying || pool == null)
-        		return true;
+            if (destroying || pool == null)
+                return true;
 
-        	Helper.launchBrowser(this, Helper.getWebPoolURL(this, pool.id));
-        	return true;
+            Helper.launchBrowser(this, Helper.getWebPoolURL(this, pool.id));
+            return true;
 
         default:
             return super.onOptionsItemSelected(item);

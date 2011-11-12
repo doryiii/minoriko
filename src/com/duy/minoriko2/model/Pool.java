@@ -65,9 +65,9 @@ public class Pool {
 
         String desc = "";
         try {
-        	desc = Helper.convertDanbooruToHtml(
-        			node.getElementsByTagName("description")
-        			.item(0).getTextContent());
+            desc = Helper.convertDanbooruToHtml(
+                    node.getElementsByTagName("description")
+                    .item(0).getTextContent());
         } catch (Exception e) {}
 
         this.desc = desc;
