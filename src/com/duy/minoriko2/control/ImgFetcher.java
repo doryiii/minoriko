@@ -29,6 +29,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 
+import com.duy.minoriko2.IntentActionData;
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -68,8 +70,12 @@ public class ImgFetcher extends AsyncTask<String, Integer, String> {
         try {
             URL url = new URL(addr[0]);
 
-            File SDCardRoot = Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS);
+            File SDCardRoot;
+            if(IntentActionData.isActive())
+            	SDCardRoot = new File(IntentActionData.getOutput());
+            else
+            	SDCardRoot = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS);
             if (!SDCardRoot.exists() && !SDCardRoot.mkdir()) {
                 throw new IOException();
             }
@@ -164,8 +170,14 @@ public class ImgFetcher extends AsyncTask<String, Integer, String> {
             Toast.makeText(appContext, error,
                     Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(appContext, "Saved file " + loc,
-                    Toast.LENGTH_SHORT).show();
+        	if(IntentActionData.isActive()) {
+            	Toast.makeText(appContext, "You can return to main program now",
+                        Toast.LENGTH_SHORT).show();
+            	IntentActionData.addFile(loc);
+            }
+        	else
+        		Toast.makeText(appContext, "Saved file " + loc,
+        				Toast.LENGTH_SHORT).show();
         }
 
         if (callback != null) {
