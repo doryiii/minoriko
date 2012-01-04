@@ -672,7 +672,7 @@ public class ImgViewActivity extends Activity implements
         @Override
         public int getCount() {
             if (destroying || posts == null ||
-            	posts.get(index) == null || posts.get(index).tags == null)
+                posts.get(index) == null || posts.get(index).tags == null)
                 return 0;
             return posts.get(index).tags.length;
         }
@@ -715,21 +715,21 @@ public class ImgViewActivity extends Activity implements
         @Override
         public int getCount() {
             if (destroying || comments == null)
-            	return 0;
+                return 0;
             return comments.size();
         }
 
         @Override
         public Object getItem(int i) {
             if (destroying || comments == null)
-            	return null;
+                return null;
             return comments.get(i);
         }
 
         @Override
         public long getItemId(int i) {
             if (destroying || comments == null)
-            	return 0;
+                return 0;
             return comments.get(i).id;
         }
 

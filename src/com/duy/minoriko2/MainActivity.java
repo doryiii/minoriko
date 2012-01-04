@@ -43,24 +43,24 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	@Override
-	public void finish() {
+    @Override
+    public void finish() {
         if(IntentActionData.isActive())
         {
-        	if(IntentActionData.isSaved())
-        	{
-        		Intent i = new Intent();
-        		i.putExtra(MediaStore.EXTRA_OUTPUT, IntentActionData.getFiles());
-        		setResult(RESULT_OK, i);
-        	}
-        	else
-        		setResult(RESULT_CANCELED);
-    		IntentActionData.clearData();
+            if(IntentActionData.isSaved())
+            {
+                Intent i = new Intent();
+                i.putExtra(MediaStore.EXTRA_OUTPUT, IntentActionData.getFiles());
+                setResult(RESULT_OK, i);
+            }
+            else
+                setResult(RESULT_CANCELED);
+            IntentActionData.clearData();
         }
-		super.finish();
-	}
+        super.finish();
+    }
 
-	ListView mainList;
+    ListView mainList;
     private static final int POOL = 0, POST = 1, TAGS = 2, SERVERS = 3,
             FAVS = 4, SETTING = 5;
     private static final int N_ITEMS = 6;
@@ -110,10 +110,10 @@ public class MainActivity extends Activity {
                 .getBoolean("is_auto_purge", true)) {
             new CleanCache().execute();
         }
-        
+
         Intent i = getIntent();
-        if(i!=null && i.getAction().compareTo(Intent.ACTION_PICK)==0)
-        	IntentActionData.setData(i.getStringExtra(MediaStore.EXTRA_OUTPUT));
+        if(i != null && i.getAction().compareTo(Intent.ACTION_PICK) == 0)
+            IntentActionData.setData(i.getStringExtra(MediaStore.EXTRA_OUTPUT));
     }
 
     protected void openPools() {

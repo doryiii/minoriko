@@ -72,9 +72,9 @@ public class ImgFetcher extends AsyncTask<String, Integer, String> {
 
             File SDCardRoot;
             if(IntentActionData.isActive())
-            	SDCardRoot = new File(IntentActionData.getOutput());
+                SDCardRoot = new File(IntentActionData.getOutput());
             else
-            	SDCardRoot = Environment.getExternalStoragePublicDirectory(
+                SDCardRoot = Environment.getExternalStoragePublicDirectory(
                         Environment.DIRECTORY_DOWNLOADS);
             if (!SDCardRoot.exists() && !SDCardRoot.mkdir()) {
                 throw new IOException();
@@ -170,14 +170,14 @@ public class ImgFetcher extends AsyncTask<String, Integer, String> {
             Toast.makeText(appContext, error,
                     Toast.LENGTH_SHORT).show();
         } else {
-        	if(IntentActionData.isActive()) {
-            	Toast.makeText(appContext, "You can return to main program now",
+            if(IntentActionData.isActive()) {
+                Toast.makeText(appContext, "You can return to main program now",
                         Toast.LENGTH_SHORT).show();
-            	IntentActionData.addFile(loc);
+                IntentActionData.addFile(loc);
+            } else {
+                Toast.makeText(appContext, "Saved file " + loc,
+                        Toast.LENGTH_SHORT).show();
             }
-        	else
-        		Toast.makeText(appContext, "Saved file " + loc,
-        				Toast.LENGTH_SHORT).show();
         }
 
         if (callback != null) {
