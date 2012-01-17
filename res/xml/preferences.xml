@@ -48,22 +48,22 @@
         android:key="is_auto_purge"
         android:defaultValue="true"/>
 
-<!--
-    <PreferenceCategory android:title="Login">
+
+    <PreferenceCategory android:title="Danbooru/Hijiribe Login">
       <EditTextPreference
-          android:name="EditText Preference"
-          android:summary="This allows you to enter a string"
-          android:defaultValue="Nothing"
-          android:title="Edit This Text"
-          android:key="editTextPref" />
+          android:name="Danbooru Username"
+          android:summary="Enter Danbooru Username"
+          android:defaultValue=""
+          android:title="Username"
+          android:key="danbooru_username" />
 
       <EditTextPreference
-          android:name="SIP Password"
-          android:summary="Password for your SIP Account"
+          android:name="Danbooru Password"
+          android:summary="Enter Danbooru Password"
           android:defaultValue=""
-          android:title="Enter Password"
-          android:key="passPref"
+          android:title="Password"
+          android:key="danbooru_password"
           android:password="true" />
     </PreferenceCategory>
--->
+
 </PreferenceScreen>

@@ -158,24 +158,42 @@ public class Helper {
     public static String getPostListUrl(Context context,
             String query, int page) {
         String serverRoot = getServerRoot(context);
+        StringBuilder res = new StringBuilder(serverRoot);
 
         switch (getServerType(context)) {
         case GELBOORU:
-            return serverRoot + "/index.php?page=dapi&s=post&q=index&" +
-                    "tags=" + URLEncoder.encode(query) +
-                    "&limit=" + POST_PER_PAGE +
-                    "&pid=" + (page == -1 ? "" : String.valueOf(page-1));
+            res.append("/index.php?page=dapi&s=post&q=index&")
+               .append("tags=").append(URLEncoder.encode(query))
+               .append("&limit=").append(POST_PER_PAGE)
+               .append("&pid=")
+               .append(page == -1 ? "" : String.valueOf(page-1));
             // gelbooru number pages from 0, not 1 like danbooru
-
+            break;
         case DANBOORU:
-            return serverRoot + "/post/index.xml?" +
-                    "tags=" + URLEncoder.encode(query) +
-                    "&limit=" + POST_PER_PAGE +
-                    "&page=" + (page == -1 ? "" : String.valueOf(page));
-
+            res.append("/post/index.xml?")
+               .append("tags=").append(URLEncoder.encode(query))
+               .append("&limit=").append(POST_PER_PAGE)
+               .append("&page=")
+               .append(page == -1 ? "" : String.valueOf(page));
+            break;
         default:
             return "";
         }
+
+        if (serverRoot.contains("danbooru.donmai.us") ||
+            serverRoot.contains("hijiribe.donmai.us")) {
+            //res.append("&login=jimreynold2nd")
+            //   .append("&password_hash=8f1084b565e5aae02b306283d2e03242a24734c5");
+            SharedPreferences settings = PreferenceManager
+                    .getDefaultSharedPreferences(context);
+
+            res.append("&login=");
+            res.append(settings.getString("danbooru_username", ""));
+            res.append("&password_hash=");
+            res.append(settings.getString("danbooru_password", ""));
+        }
+
+        return res.toString();
     }
 
     /* Functions related to comments */

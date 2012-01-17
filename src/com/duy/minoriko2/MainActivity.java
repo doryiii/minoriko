@@ -25,6 +25,7 @@ import com.duy.minoriko2.control.Helper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -114,6 +116,16 @@ public class MainActivity extends Activity {
         Intent i = getIntent();
         if(i != null && i.getAction().compareTo(Intent.ACTION_PICK) == 0)
             IntentActionData.setData(i.getStringExtra(MediaStore.EXTRA_OUTPUT));
+
+        SharedPreferences settings = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+        if ((Helper.getServerRoot(this).contains("hijiribe") ||
+             Helper.getServerRoot(this).contains("danbooru")) &&
+             settings.getString("danbooru_username", "").equals("")) {
+            Toast.makeText(this, "Please enter Danbooru/Hijiribe login " +
+                    "information in Settings", Toast.LENGTH_LONG).show();
+        }
     }
 
     protected void openPools() {
@@ -173,6 +185,15 @@ public class MainActivity extends Activity {
         super.onResume();
         setTitle(Helper.getServerRoot(this));
         ((MainAdapter) mainList.getAdapter()).notifyDataSetChanged();
+        SharedPreferences settings = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+        if ((Helper.getServerRoot(this).contains("hijiribe") ||
+             Helper.getServerRoot(this).contains("danbooru")) &&
+             settings.getString("danbooru_username", "").equals("")) {
+            Toast.makeText(this, "Please enter Danbooru/Hijiribe login " +
+                    "information in Settings", Toast.LENGTH_LONG).show();
+        }
     }
 
     public class MainAdapter extends BaseAdapter {

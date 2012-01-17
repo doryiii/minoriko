@@ -18,17 +18,20 @@
 package com.duy.minoriko2;
 
 import java.io.File;
-
 import com.duy.minoriko2.R;
 import com.duy.minoriko2.control.Helper;
+
+import es.cesar.quitesleep.utils.SHA1Utils;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
@@ -36,6 +39,7 @@ import android.preference.PreferenceActivity;
 public class SettingsActivity extends PreferenceActivity {
     private ListPreference filterPref;
     private Preference clearCachePref;
+    private EditTextPreference danbooruUsernamePref, danbooruPasswordPref;
     private ProgressDialog dialog;
     private ClearCacheTask clearCacheTask = null;
     private CacheSizeTask cacheSizeTask = null;
@@ -48,6 +52,11 @@ public class SettingsActivity extends PreferenceActivity {
         addPreferencesFromResource(R.xml.preferences);
         filterPref = (ListPreference) findPreference("danbo_filter");
         clearCachePref = (Preference) findPreference("clear_cache");
+        danbooruUsernamePref = (EditTextPreference)
+                findPreference("danbooru_username");
+        danbooruPasswordPref = (EditTextPreference)
+                findPreference("danbooru_password");
+
         dialog = new ProgressDialog(this);
         dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         dialog.setTitle("Clearing cache");
@@ -113,6 +122,37 @@ public class SettingsActivity extends PreferenceActivity {
                 return true;
             }
         });
+
+        danbooruUsernamePref.setSummary(
+                PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("danbooru_username", "username"));
+        danbooruUsernamePref.setOnPreferenceChangeListener(
+                new OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference,
+                            Object newValue) {
+                        danbooruUsernamePref.setSummary((String) newValue);
+                        return true;
+                    }
+
+                });
+
+        danbooruPasswordPref.setSummary("password");
+        danbooruPasswordPref.setOnPreferenceChangeListener(
+                new OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference,
+                            Object newValue) {
+                        String hashed = SHA1Utils.generateSHA1toString(
+                            "choujin-steiner--" + (String) newValue + "--");
+                        PreferenceManager.getDefaultSharedPreferences(
+                            SettingsActivity.this).edit()
+                            .putString("danbooru_password", hashed)
+                            .commit();
+                        return false;
+                    }
+
+                });
 
         setResult(RESULT_OK);
         destroying = false;
