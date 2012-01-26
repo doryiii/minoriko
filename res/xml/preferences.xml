@@ -55,7 +55,9 @@
           android:summary="Enter Danbooru Username"
           android:defaultValue=""
           android:title="Username"
-          android:key="danbooru_username" />
+          android:key="danbooru_username"
+          android:singleLine="true"
+          android:imeOptions="actionDone" />
 
       <EditTextPreference
           android:name="Danbooru Password"

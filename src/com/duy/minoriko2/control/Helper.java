@@ -182,8 +182,6 @@ public class Helper {
 
         if (serverRoot.contains("danbooru.donmai.us") ||
             serverRoot.contains("hijiribe.donmai.us")) {
-            //res.append("&login=jimreynold2nd")
-            //   .append("&password_hash=8f1084b565e5aae02b306283d2e03242a24734c5");
             SharedPreferences settings = PreferenceManager
                     .getDefaultSharedPreferences(context);
 
